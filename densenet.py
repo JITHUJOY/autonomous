@@ -558,4 +558,4 @@ with tf.device('/device:GPU:0'):
 
 import os
 
-torch.save(model.state_dict(), os.path.join(dir_path,'inception_resnet.pth'))
+torch.save(model.state_dict(), os.path.join(dir_path,'dense_net.pth'))

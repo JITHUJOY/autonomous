@@ -217,48 +217,6 @@ class ResNetFeatures(nn.Module):
 
 
 
-def resnet18(pretrained=False, **kwargs):
-    """Constructs a ResNet-18 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
-    model = ResNetFeatures(BasicBlock, [2, 2, 2, 2], **kwargs)
-    if pretrained:
-        _load_pretrained(model, model_zoo.load_url(model_urls['resnet18']))
-    return model
-
-
-def  resnext50(pretrained=False, **kwargs):
-    """Constructs a ResNet-18 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
-    model = ResNetFeatures(BasicBlock, [2, 2, 2, 2], **kwargs)
-    if pretrained:
-        _load_pretrained(model, model_zoo.load_url(model_urls['resnext50_32x4d']))
-    return model
-
-
-def resnet34(pretrained=False, **kwargs):
-    """Constructs a ResNet-34 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
-    model = ResNetFeatures(BasicBlock, [3, 4, 6, 3], **kwargs)
-    if pretrained:
-        _load_pretrained(model, model_zoo.load_url(model_urls['resnet34']))
-    return model
-
-def inceptionresnetv2(pretrained=False, **kwargs):
-    """Constructs a inceptionresnetv2.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
-    model = ResNetFeatures(BasicBlock, [3, 4, 6, 3], **kwargs)
-    if pretrained:
-        _load_pretrained(model, model_zoo.load_url(model_urls['inceptionresnetv2']))
-    return model
-
 def densenet201(pretrained=False, **kwargs):
     """Constructs a densenet201 model.
     Args:
@@ -269,9 +227,6 @@ def densenet201(pretrained=False, **kwargs):
         _load_pretrained(model, model_zoo.load_url(model_urls['densenet201']))
     return model
 
-def EFF(pretrained=False, **kwargs):
-    model = EfficientNet.from_pretrained('efficientnet-b1', advprop=True)
-    return model
 
 def _load_pretrained(model, pretrained):
     model_dict = model.state_dict()
@@ -279,7 +234,6 @@ def _load_pretrained(model, pretrained):
     model_dict.update(pretrained)
     model.load_state_dict(model_dict)
 
-"""** Inception-ResNet-V2 (2016)**"""
 
 base_model = densenet201(pretrained=False)
 base_model
